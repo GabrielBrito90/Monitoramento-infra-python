@@ -15,7 +15,7 @@ Script em Python desenvolvido para o monitoramento proativo de infraestrutura, r
 O fluxo operacional do script simula a rotina de um Centro de Operações de Rede (NOC):
 
 ```mermaid
-graph LR
+graph
     A[Alvos / Servidores / Endpoints] -->|Requisições de Teste| B(Script de Monitoramento Python)
     B -->|Análise de Status & Latência| C{Condição OK?}
     C -->|Sim| D[Log de Sucesso / Normalidade]
