@@ -1,36 +1,16 @@
-import time
-import logging
-from datetime import datetime
+# Automação de Monitoramento de Infraestrutura (NOC) 🛠️
 
-# Configuração do sistema de logs (padrão NOC)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
+## 📌 Sobre o Projeto
+Script desenvolvido em Python para simular o monitoramento proativo de servidores e ambientes de missão crítica, refletindo rotinas automatizadas de observabilidade e resposta a incidentes típicas de equipes de Operações de Rede (NOC).
 
-def verificar_servidor(servidor_ip):
-    """Simula a verificação de ping/latência em um servidor crítico."""
-    logging.info(f"Verificando status de conectividade para o IP: {servidor_ip}")
-    
-    # Simulação de latência de rede estável
-    latencia_ms = 24.5
-    status = "ONLINE"
-    
-    return status, latencia_ms
+## 🛠️ Tecnologias Utilizadas
+- **Python 3.x**
+- **Logging** (Rastreabilidade e geração de logs estruturados)
+- **Automação de Infraestrutura**
 
-def executar_monitoramento():
-    """Loop de monitoramento proativo de infraestrutura."""
-    servidores_criticos = ["10.0.1.15 (AWS-Prod-DB)", "10.0.1.20 (AWS-App-API)"]
-    
-    logging.info("=== INICIANDO VARREDURA DE MONITORAMENTO NOC ===")
-    
-    for servidor in servidores_criticos:
-        status, latencia = verificar_servidor(servidor)
-        
-        if status == "ONLINE":
-            logging.info(f"Servidor {servidor} -> Status: {status} | Latência: {latencia}ms [OK]")
-        else:
-            logging.warning(f"ALERTA: Servidor {servidor} com falha de resposta! Acionando plantão.")
-
-if __name__ == "__main__":
-    executar_monitoramento()
+## 🚀 Como Executar Localmente
+Clone o repositório e execute o script de monitoramento:
+```bash
+git clone [https://github.com/GabrielBrito90/Monitoramento-infra-python.git](https://github.com/GabrielBrito90/Monitoramento-infra-python.git)
+cd Monitoramento-infra-python
+python main.py
