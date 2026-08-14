@@ -20,30 +20,3 @@ graph LR
     B -->|Análise de Status & Latência| C{Condição OK?}
     C -->|Sim| D[Log de Sucesso / Normalidade]
     C -->|Não| E[Geração de Alerta / Registro de Incidente]
-
-
-
-
-
----
-
-## 📋 Exemplo de Configuração (`config.json`)
-O sistema utiliza um arquivo JSON estruturado para gerenciar os alvos de forma desacoplada do código principal:
-
-```json
-{
-  "targets": [
-    {
-      "name": "Servidor de Produção Principal",
-      "type": "http",
-      "endpoint": "[https://api.exemplo.com/health](https://api.exemplo.com/health)",
-      "timeout_seconds": 5
-    },
-    {
-      "name": "Banco de Dados Central",
-      "type": "ping",
-      "host": "192.168.1.10",
-      "timeout_seconds": 3
-    }
-  ]
-}
