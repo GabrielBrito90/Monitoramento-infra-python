@@ -20,3 +20,39 @@ graph LR
     B -->|Análise de Status & Latência| C{Condição OK?}
     C -->|Sim| D[Log de Sucesso / Normalidade]
     C -->|Não| E[Geração de Alerta / Registro de Incidente]
+C -->|Sim| D[Log de Sucesso / Normalidade]
+    C -->|Não| E[Geração de Alerta / Registro de Incidente]
+
+📦 Monitoramento-infra-python
+ ┣ 📂 logs           # Diretório de armazenamento de logs de execução
+ ┣ 📂 src
+ ┃ ┣ 📜 checker.py   # Lógica principal de verificação de hosts e serviços
+ ┃ ┗ 📜 logger.py    # Módulo de estruturação e salvamento de logs
+ ┣ 📜 config.json    # Arquivo de configuração de alvos e timeouts
+ ┣ 📜 main.py        # Ponto de entrada do script de monitoramento
+ ┣ 📜 requirements.txt
+ ┗ 📜 README.md
+
+{
+  "targets": [
+    {
+      "name": "Servidor de Produção Principal",
+      "type": "http",
+      "endpoint": "[https://api.exemplo.com/health](https://api.exemplo.com/health)",
+      "timeout_seconds": 5
+    },
+    {
+      "name": "Banco de Dados Central",
+      "type": "ping",
+      "host": "192.168.1.10",
+      "timeout_seconds": 3
+    }
+  ]
+}
+
+[2026-08-14 18:30:15] [INFO] Iniciando varredura de alvos monitorados...
+[2026-08-14 18:30:15] [SUCCESS] Target 'Servidor de Produção Principal' [HTTP] - Status: 200 OK - Latência: 120ms
+[2026-08-14 18:30:16] [SUCCESS] Target 'Banco de Dados Central' [PING] - Status: Online - Latência: 15ms
+[2026-08-14 18:30:16] [INFO] Ciclo de monitoramento finalizado com sucesso. Nenhum incidente detectado.
+
+
